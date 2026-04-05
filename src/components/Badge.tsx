@@ -6,7 +6,7 @@ export default function Badge() {
         Hosted on IPFS
       </div>
       <p className="text-xs text-zinc-500">
-        Access via <span className="font-mono text-zinc-700 dark:text-zinc-300">jiangban.eth.limo</span>
+        Access via <span className="font-mono text-zinc-500 dark:text-zinc-500">jiangban.eth.limo</span>
       </p>
     </div>
   );

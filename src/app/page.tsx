@@ -14,6 +14,17 @@ export default function Home() {
 
         <SocialLogo />
 
+
+
+
+
+
+
+
+
+
+
+
         <Badge />
         
       </main>
