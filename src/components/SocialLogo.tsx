@@ -2,10 +2,16 @@ import Image from "next/image";
 
 export default function SocialLogo() {
   const socials = [
+
+    /*     {
+      href: "https://www.instagram.com/qinjiangban",
+      iconSrc: "/logo/instagram.png",
+      label: "Instagram",
+    }, */
     {
-      href: "https://app.ens.domains/jiangban.eth",
-      iconSrc: "/logo/ENS.jpg",
-      label: "ENS",
+      href: "https://www.tiktok.com/@qinjiangban",
+      iconSrc: "/logo/Tiktok.jpeg",
+      label: "TikTok",
     },
     {
       href: "https://farcaster.xyz/qinjiangban",
@@ -23,35 +29,31 @@ export default function SocialLogo() {
       label: "Zora",
     },
     {
-      href: "https://paragraph.com/jiangban.eth",
-      iconSrc: "/logo/paragraph.png",
-      label: "Paragraph",
+      href: "https://app.ens.domains/jiangban.eth",
+      iconSrc: "/logo/ENS.jpg",
+      label: "ENS",
     },
- /*    {
-      href: "#",
-      iconSrc: "/logo/OpenSea.png",
-      label: "OpenSea",
-    }, */
+    /*     {
+          href: "https://paragraph.com/jiangban.eth",
+          iconSrc: "/logo/paragraph.png",
+          label: "Paragraph",
+        },
+        {
+          href: "#",
+          iconSrc: "/logo/OpenSea.png",
+          label: "OpenSea",
+        },
+        {
+          href: "https://talent.app/qinjiangban",
+          iconSrc: "/logo/Talent.jpg",
+          label: "Talent",
+        }, */
     {
-      href: "https://talent.app/qinjiangban",
-      iconSrc: "/logo/Talent.jpg",
-      label: "Talent",
-    },
-    {
-      href: "https://cn.rootdata.com/member/%E8%A6%83%E6%B1%9F%E6%89%AE?k=MjcxMjc=",
+      href: "https://www.rootdata.com/member/%E8%A6%83%E6%B1%9F%E6%89%AE?k=MjcxMjc%3D",
       iconSrc: "/logo/Rootdata.jpg",
       label: "RootData",
     },
-    {
-      href: "https://www.instagram.com/qinjiangban",
-      iconSrc: "/logo/instagram.png",
-      label: "Instagram",
-    },
-    {
-      href: "https://www.tiktok.com/@qinjiangban",
-      iconSrc: "/logo/Tiktok.jpeg",
-      label: "TikTok",
-    },
+
   ];
 
   return (
