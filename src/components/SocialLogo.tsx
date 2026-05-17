@@ -9,11 +9,6 @@ export default function SocialLogo() {
       label: "Instagram",
     }, */
     {
-      href: "https://www.tiktok.com/@qinjiangban",
-      iconSrc: "/logo/Tiktok.jpeg",
-      label: "TikTok",
-    },
-    {
       href: "https://farcaster.xyz/qinjiangban",
       iconSrc: "/logo/Farcaster.jpg",
       label: "Farcaster",

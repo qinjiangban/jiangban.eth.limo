@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTiktok, FaYoutube } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { RiWechatChannelsLine } from "react-icons/ri";
 import LinkCard from "./LinkCard";
@@ -36,6 +36,11 @@ export default function SocialLinks() {
       title: "YouTube",
       icon: <FaYoutube className="w-6 h-6 text-[#FF0000]" />
     },
+    {
+      href: "https://www.tiktok.com/@qinjiangban",
+      title: "Tiktok",
+      icon: <FaTiktok className="w-6 h-6 text-[#000000]" />
+    }
   ];
 
   return (
