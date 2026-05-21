@@ -14,7 +14,7 @@ export default function SocialLogo() {
       label: "Farcaster",
     },
     {
-      href: "https://firefly.social/profile/lens/qinjiangban",
+      href: "https://hey.xyz/u/jiangban",
       iconSrc: "/logo/lens.jpg",
       label: "Lens",
     },
@@ -28,26 +28,26 @@ export default function SocialLogo() {
       iconSrc: "/logo/ENS.jpg",
       label: "ENS",
     },
-    /*     {
-          href: "https://paragraph.com/jiangban.eth",
-          iconSrc: "/logo/paragraph.png",
-          label: "Paragraph",
-        },
-        {
-          href: "#",
-          iconSrc: "/logo/OpenSea.png",
-          label: "OpenSea",
-        },
-        {
-          href: "https://talent.app/qinjiangban",
-          iconSrc: "/logo/Talent.jpg",
-          label: "Talent",
-        }, */
+/*     {
+      href: "https://paragraph.com/jiangban.eth",
+      iconSrc: "/logo/paragraph.png",
+      label: "Paragraph",
+    },
+    {
+      href: "#",
+      iconSrc: "/logo/OpenSea.png",
+      label: "OpenSea",
+    },
+    {
+      href: "https://talent.app/qinjiangban",
+      iconSrc: "/logo/Talent.jpg",
+      label: "Talent",
+    },
     {
       href: "https://www.rootdata.com/member/%E8%A6%83%E6%B1%9F%E6%89%AE?k=MjcxMjc%3D",
       iconSrc: "/logo/Rootdata.jpg",
       label: "RootData",
-    },
+    }, */
 
   ];
 
