@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Jiangban Qin - Web3 Builder & Developer",
   description: "Personal website of Jiangban, Qin, a Web3 Builder & Developer. ENS: jiangban.eth",
+   other: {
+    'base:app_id': '6a0c45816b7916c4b4095207',
+  },
 };
 
 export default function RootLayout({
