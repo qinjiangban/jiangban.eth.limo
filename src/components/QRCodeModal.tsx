@@ -1,5 +1,16 @@
-import { FiX } from "react-icons/fi";
+"use client";
+
+import Image from "next/image";
 import { FaWeixin } from "react-icons/fa";
+
+import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 interface QRCodeModalProps {
   isOpen: boolean;
@@ -7,38 +18,45 @@ interface QRCodeModalProps {
 }
 
 export default function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
-  if (!isOpen) return null;
-
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm transition-opacity"
-      onClick={onClose}
+    <Dialog
+      open={isOpen}
+      onOpenChange={(open) => {
+        if (!open) onClose();
+      }}
     >
-      <div 
-        className="relative w-full max-w-sm bg-white rounded-3xl p-8 shadow-2xl flex flex-col items-center transform transition-all animate-in fade-in zoom-in-95 duration-200"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button 
-          onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-zinc-600 hover:bg-zinc-100 rounded-full transition-colors"
-        >
-          <FiX className="w-5 h-5" />
-        </button>
+      <DialogContent className="max-w-sm rounded-[28px] border-white/70 bg-white/95 p-8 shadow-2xl shadow-black/10">
+        <DialogHeader className="items-center text-center">
+          <div className="flex size-12 items-center justify-center rounded-2xl bg-[#07C160]/10 text-[#07C160]">
+            <FaWeixin className="size-7" />
+          </div>
 
-        <div className="w-12 h-12 bg-[#07C160]/10 rounded-2xl flex items-center justify-center mb-4">
-          <FaWeixin className="w-7 h-7 text-[#07C160]" />
-        </div>
-        
-        <h3 className="text-xl font-bold text-black mb-2">WeChat Channel</h3>
-        <p className="text-zinc-500 text-sm text-center mb-8">
-          Scan the QR code below using WeChat to follow my channel
-        </p>
+          <DialogTitle className="text-xl">WeChat Channel</DialogTitle>
+          <DialogDescription className="max-w-[22rem]">
+            Scan the QR code below using WeChat to follow my channel.
+          </DialogDescription>
+        </DialogHeader>
 
-        <div className="w-48 h-48 bg-zinc-100 rounded-2xl border-2 border-zinc-100 flex items-center justify-center overflow-hidden">
-       
-          <img src="/wechat-qr.png" alt="WeChat QR" width={192} height={192} />
+        <div className="flex flex-col items-center gap-4">
+          <div className="overflow-hidden rounded-[24px] border border-border bg-muted/60 p-3 shadow-inner">
+            <Image
+              src="/wechat-qr.png"
+              alt="WeChat QR"
+              width={208}
+              height={208}
+              className="size-52 rounded-[18px] object-cover"
+              priority
+            />
+          </div>
+
+          <Badge
+            variant="secondary"
+            className="h-auto rounded-full bg-brand/10 px-3 py-1 text-brand"
+          >
+            使用微信扫码关注
+          </Badge>
         </div>
-      </div>
-    </div>
+      </DialogContent>
+    </Dialog>
   );
 }

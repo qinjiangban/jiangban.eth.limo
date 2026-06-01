@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { Attribution } from "ox/erc8021";
 import { FaEthereum } from "react-icons/fa";
 import { FiArrowLeft, FiCopy, FiCheck } from "react-icons/fi";
 import Link from "next/link";
@@ -8,6 +9,10 @@ import Image from "next/image";
 
 const RECIPIENT_ADDRESS = "0x6e5C9aFa78E4a476600279b8dFDa29572e5F2a43";
 const ENS_NAME = "jiangban.eth";
+const BASE_BUILDER_CODE = process.env.NEXT_PUBLIC_BASE_BUILDER_CODE?.trim();
+const BASE_DATA_SUFFIX = BASE_BUILDER_CODE
+    ? Attribution.toDataSuffix({ codes: [BASE_BUILDER_CODE] })
+    : undefined;
 
 const NETWORKS = {
     base: {
@@ -169,6 +174,11 @@ export default function Web3TipPage() {
                 txParams.value = "0x0";
             }
 
+            // 仅 Base Mainnet 自动附加 Builder Code attribution
+            if (targetNetwork.id === "base" && BASE_DATA_SUFFIX) {
+                txParams.dataSuffix = BASE_DATA_SUFFIX;
+            }
+
             // 4. 发起交易
             // @ts-ignore
             const tx = await window.ethereum.request({
@@ -208,7 +218,7 @@ export default function Web3TipPage() {
                     <div className="w-full bg-zinc-50 rounded-[16px] p-4 mb-4 text-left border border-zinc-100 flex flex-col gap-3 shrink-0">
                         {/* ENS 域名 */}
                         <div className="flex flex-col gap-1">
-                            <label className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">ENS Domain</label>
+                            <label className="text-[11px] font-semibold text-zinc-500 tracking-wider">ENS Domain</label>
                             <div className="flex items-center justify-between bg-white border border-zinc-200 rounded-xl p-2.5">
                                 <span className="text-[13px] font-bold text-zinc-800">{ENS_NAME}</span>
                                 <button
@@ -223,7 +233,7 @@ export default function Web3TipPage() {
 
                         {/* EVM 地址 */}
                         <div className="flex flex-col gap-1">
-                            <label className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">EVM Address</label>
+                            <label className="text-[11px] font-semibold text-zinc-500 tracking-wider">EVM Address</label>
                             <div className="flex items-center justify-between bg-white border border-zinc-200 rounded-xl p-2.5">
                                 <span className="text-[11px] sm:text-xs font-mono text-zinc-600 break-all pr-2">{RECIPIENT_ADDRESS}</span>
                                 <button
@@ -249,7 +259,7 @@ export default function Web3TipPage() {
                     <div className="w-full flex flex-col gap-3 mb-4 text-left shrink-0">
                         {/* 网络选择 */}
                         <div>
-                            <label className="block text-[11px] font-semibold text-zinc-500 mb-1.5 uppercase tracking-wider">网络 (Network)</label>
+                            <label className="block text-[11px] font-semibold text-zinc-500 mb-1.5 tracking-wider">网络 (Network)</label>
                             <div className="grid grid-cols-2 gap-2.5">
                                 {(Object.keys(NETWORKS) as NetworkId[]).map((netId) => (
                                     <button
@@ -269,7 +279,7 @@ export default function Web3TipPage() {
 
                         {/* 代币选择 */}
                         <div>
-                            <label className="block text-[11px] font-semibold text-zinc-500 mb-1.5 uppercase tracking-wider">代币 (Token)</label>
+                            <label className="block text-[11px] font-semibold text-zinc-500 mb-1.5 tracking-wider">代币 (Token)</label>
                             <div className="grid grid-cols-2 gap-2.5">
                                 <button
                                     onClick={() => setToken("USDC")}
@@ -296,7 +306,7 @@ export default function Web3TipPage() {
 
                         {/* 金额输入 */}
                         <div>
-                            <label className="block text-[11px] font-semibold text-zinc-500 mb-1.5 uppercase tracking-wider">金额 (Amount)</label>
+                            <label className="block text-[11px] font-semibold text-zinc-500 mb-1.5 tracking-wider">金额 (Amount)</label>
                             <div className="relative flex items-center">
                                 <div className="absolute left-3.5 top-1/2 -translate-y-1/2">
                                     {token === "USDC" ? (
@@ -342,14 +352,14 @@ export default function Web3TipPage() {
                         ) : (
                             <div className="w-full bg-[#07C160]/10 border border-[#07C160]/20 rounded-2xl p-4 text-center">
                                 <p className="text-[#07C160] font-bold mb-1 text-[14px]">🎉 打赏成功！感谢支持！</p>
-                                <a
+                                <Link
                                     href={`${NETWORKS[network].explorer}/tx/${txHash}`}
                                     target="_blank"
                                     rel="noreferrer"
                                     className="text-[11px] text-[#07C160] hover:underline font-mono break-all"
                                 >
                                     查看交易: {txHash.substring(0, 8)}...{txHash.substring(txHash.length - 6)}
-                                </a>
+                                </Link>
                                 <button
                                     onClick={() => setStatus("idle")}
                                     className="block mx-auto mt-2 text-[11px] font-medium text-zinc-500 hover:text-zinc-700 underline"

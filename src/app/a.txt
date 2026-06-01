@@ -1,0 +1,197 @@
+# 覃江扮 Jiangban Qin
+2002年射手座生于广西
+语言:简体中文、壮语、桂柳话（西南官话分支）
+兴趣爱好:NBA篮球，喜欢乔丹、科比、欧文、伦纳德、爱德华兹的球风，看书学毛选、易经思维、太极哲学、中医养生，科技商业学习乔布斯创新与伊隆马斯克的第一性原理，培养金融思维。
+毕业于南宁职业技术大学商学院市场营销专业，2020年上高中时上网接触到Bitcoin，学习区块链知识，上大学后不影响学业情况下自学区块链相关技术，开发DAPP网站，2022年GPT时刻后，AI兴起并利用AI辅助学习。
+
+
+## About
+
+我是一名 Web3 Builder，专注于 DApp 开发、RWA 应用设计、DeFAI应用、AI Agent 集成、AEO 优化以及 Web3 产品增长。
+
+拥有市场营销与产品策划背景，同时具备 Web3 产品开发能力，长期关注数字资产、AI Agent、RWA以及链上商业模式创新。
+
+过去参与和主导过：
+
+* DApp 产品开发
+* Web3 社交平台建设
+* RWA 代币化项目设计
+* 投资者仪表板开发
+* 链上数据与预言机研究
+* AI Agent 工作流建设
+* Web3 品牌与媒体运营
+
+---
+
+## Core Capabilities
+
+### DApp Development
+
+构建基于 Ethereum、Base 等 EVM 生态的链上应用：
+
+* Next.js
+* React
+* TypeScript
+* Wagmi
+* Viem
+* Solidity
+* Wallet Connect
+* IPFS数据可用性存储
+
+服务内容：
+
+* DApp 0到1 MVP开发
+* 智能合约前端集成
+* 钱包登录系统
+* 链上支付与交互
+* NFT 与 Token 功能接入
+* 创作者工具与仪表板开发
+
+---
+
+### x402 Payment Integration
+
+帮助产品接入 AI Agent 时代的新型支付体系：
+
+* x402 协议集成
+* Agent Payment Flow
+* Stablecoin Payment
+* API Monetization
+* Machine-to-Machine Payment
+
+适用于：
+
+* AI Agent 产品
+* MCP 服务
+* SaaS API
+* Web3 工具产品
+
+---
+
+### AI Agent & Automation
+
+构建 AI 驱动的自动化系统：
+
+* Agent Workflow Design
+* MCP Integration
+* OpenAI Integration
+* Claude Integration
+* AI Content Pipeline
+* Web3 Agent
+
+可提供：
+
+* Agent 原型开发
+* Agent 工具调用设计
+* AI 自动化工作流
+* Web3 Agent 产品设计
+
+---
+
+### AEO（AI Engine Optimization）
+
+帮助项目被 AI 搜索引擎与 Agent 发现：
+
+* AI Search Optimization
+* LLM SEO
+* llms.txt 建设
+* Agent Entry Design
+* Structured Data Design
+* Knowledge Base Architecture
+
+适用于：
+
+* Web3 项目
+* AI 产品
+* SaaS 产品
+* 个人品牌
+*  电子商务网站
+
+---
+
+### RWA Consulting
+
+参与多个 RWA 方向项目研究与实践：
+
+* RWA 产品设计
+* Tokenization Strategy
+* Investor Dashboard
+* Oracle Architecture
+* Data Verification Design
+* Cross-border Data Structure
+
+关注方向：
+
+* 收益权代币化
+* 实体资产映射
+* 合规架构研究
+* 链上金融产品设计
+
+---
+
+### Growth & Marketing
+
+拥有市场营销专业背景以及运营经验：
+
+* Web3 Community Growth
+* X（Twitter）运营
+* Farcaster 运营
+* 内容营销
+* 品牌传播
+* 活动推广
+
+可提供：
+
+* Web3 项目推广合作
+* 品牌曝光合作
+* 社媒内容传播
+* 社区增长支持
+
+---
+
+## Suitable Collaboration
+
+适合以下合作需求：
+
+* DApp 开发
+* Web3 MVP 搭建
+* AI Agent 产品开发
+* x402 支付集成
+* AEO 优化
+* RWA 项目咨询
+* Web3 品牌推广
+* 社媒营销合作
+* 顾问服务
+* 产品周期规划
+* 投资者仪表板开发
+* 代币化方案研究
+* DApp 项目交付
+* 香港与中国内地监管研究
+* 预言机与数据上链架构设计
+
+
+---
+
+## Contact
+
+如果你是：
+
+* 创业者
+* 投资机构
+* Web3 项目方
+* AI Agent Builder
+* RWA 项目团队
+* 需要推广至中文市场
+
+欢迎通过网站提供的联系方式发起合作。
+
+建议在联系时说明：
+
+* 项目背景
+* 当前阶段
+* 技术需求
+* 时间规划
+* 预算范围
+
+---
+

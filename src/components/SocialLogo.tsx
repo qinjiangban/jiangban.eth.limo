@@ -1,4 +1,6 @@
-import Image from "next/image";
+import Link from "next/link";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function SocialLogo() {
   const socials = [
@@ -52,25 +54,24 @@ export default function SocialLogo() {
   ];
 
   return (
-    <div className="flex flex-wrap items-center justify-center gap-4 mt-2 mb-4 w-full px-2">
-      {socials.map((social, index) => (
-        <a
-          key={index}
+    <div className="mt-2 mb-4 flex w-full flex-wrap items-center justify-center gap-4 px-2">
+      {socials.map((social) => (
+        <Link
+          key={social.label}
           href={social.href}
           title={social.label}
           aria-label={social.label}
           target="_blank"
-          className="text-zinc-600 hover:text-brand dark:text-zinc-400 dark:hover:text-brand transition-transform transform hover:scale-110 flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm border border-zinc-100 overflow-hidden"
+          rel="noreferrer"
+          className="transition-transform duration-300 hover:-translate-y-0.5"
         >
-          <Image
-            src={social.iconSrc}
-            alt={social.label}
-            width={40}
-            height={40}
-            className="w-full h-full object-cover"
-            unoptimized
-          />
-        </a>
+          <Avatar className="size-10 bg-white shadow-sm after:border-black/5">
+            <AvatarImage src={social.iconSrc} alt={social.label} />
+            <AvatarFallback className="text-[11px]">
+              {social.label.slice(0, 2)}
+            </AvatarFallback>
+          </Avatar>
+        </Link>
       ))}
     </div>
   );

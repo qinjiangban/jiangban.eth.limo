@@ -1,5 +1,8 @@
-import { ReactNode } from "react";
-import { FiArrowUpRight } from "react-icons/fi";
+import type { ReactNode } from "react";
+import Link from "next/link";
+import { ArrowUpRightIcon } from "lucide-react";
+
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface LinkCardProps {
   href?: string;
@@ -9,35 +12,46 @@ interface LinkCardProps {
 }
 
 export default function LinkCard({ href, title, icon, onClick }: LinkCardProps) {
-  const commonClasses = "group relative w-full flex items-center p-[18px] rounded-[16px] bg-white shadow-sm hover:shadow-md transition-all duration-300 hover:scale-[1.01] cursor-pointer";
-
   const content = (
-    <>
-      <div className="absolute left-5 flex items-center justify-center">
-        {icon}
-      </div>
+    <Card className="w-full gap-0 rounded-[16px] border-white/70 bg-white/95 py-0 shadow-sm ring-black/5 transition-all duration-300 group-hover:scale-[1.01] group-hover:shadow-md">
+      <CardHeader className="relative px-[18px] py-[18px]">
+        <div className="flex items-center">
+          <div className="absolute left-5 flex items-center justify-center text-foreground">
+            {icon}
+          </div>
 
-      <span className="w-full text-center font-medium text-[15px] text-black">
-        {title}
-      </span>
+          <CardTitle className="w-full text-center text-[15px] font-medium text-foreground">
+            {title}
+          </CardTitle>
 
-      <div className="absolute right-5 flex items-center justify-center text-zinc-400 group-hover:text-zinc-600 transition-colors">
-        <FiArrowUpRight className="w-5 h-5" />
-      </div>
-    </>
+          <div className="absolute right-5 text-muted-foreground transition-colors group-hover:text-foreground/70">
+            <ArrowUpRightIcon />
+          </div>
+        </div>
+      </CardHeader>
+    </Card>
   );
 
   if (onClick) {
     return (
-      <div onClick={onClick} className={commonClasses}>
+      <button
+        type="button"
+        onClick={onClick}
+        className="group block w-full cursor-pointer text-left"
+      >
         {content}
-      </div>
+      </button>
     );
   }
 
   return (
-    <a href={href} className={commonClasses} target='_blank'>
+    <Link
+      href={href || ""}
+      className="group block w-full"
+      target="_blank"
+      rel="noreferrer"
+    >
       {content}
-    </a>
+    </Link>
   );
 }

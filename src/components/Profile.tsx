@@ -1,45 +1,59 @@
-import Image from "next/image";
 import Link from "next/link";
-import { FaCoffee } from "react-icons/fa";
+import { CoffeeIcon } from "lucide-react";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+
+const highlights = ["create coolha.com", "web3 build developer"];
 
 export default function Profile() {
   return (
-    <div className="w-full bg-white rounded-[24px] p-6 shadow-sm flex flex-col items-start text-left relative">
-      {/* 打赏按钮放置在卡片右上角 */}
-      <Link
-        href="/gratuity"
-        className="absolute top-6 right-6 flex items-center justify-center gap-1.5 px-3 py-2 rounded-full bg-brand/10 text-brand font-medium text-sm hover:bg-brand hover:text-white transition-all duration-300 shadow-sm"
-        title="gratuity"
-      >
-        <FaCoffee  className="w-4 h-4" /> Gratuity
-      </Link>
+    <Card className="relative w-full gap-0 rounded-[24px] border-white/60 bg-white/95 py-0 shadow-xl shadow-brand/8 ring-black/5 backdrop-blur">
+      <CardHeader className="px-6 pt-6 pb-0">
+        <Link
+          href="/gratuity"
+          title="gratuity"
+          className={cn(
+            buttonVariants({ variant: "outline", size: "sm" }),
+            "absolute top-6 right-6 h-auto rounded-full border-brand/15 bg-brand/10 px-3 py-2 text-sm text-brand hover:bg-brand hover:text-white"
+          )}
+        >
+          <CoffeeIcon data-icon="inline-start" />
+          Gratuity
+        </Link>
 
-      <div className="w-16 h-16 rounded-full overflow-hidden border border-zinc-100 shadow-sm mb-4 relative">
-        <Image
-          src="/avatar.png"
-          alt="jiangban.eth avatar"
-          fill
-          className="object-cover"
-          unoptimized
-        />
-      </div>
+        <div className="flex flex-col items-start text-left">
+          <Avatar
+            size="lg"
+            className="mb-4 size-16 shadow-sm after:border-black/5"
+          >
+            <AvatarImage src="/avatar.png" alt="jiangban.eth avatar" />
+            <AvatarFallback>JQ</AvatarFallback>
+          </Avatar>
 
-      <h1 className="text-2xl font-bold tracking-tight text-black mb-1">
-        Jiangban Qin
-      </h1>
-
-      {/*       <p className="text-[14px] text-zinc-400 mb-4">
-        Founder
-      </p> */}
-
-      <div className="space-y-1.5 text-[14px] text-black">
-        <div className="flex items-center gap-2">
-          <span>🟩create coolha.com</span>
+          <CardTitle className="mb-1 text-2xl font-bold tracking-tight text-foreground">
+            Jiangban Qin
+          </CardTitle>
         </div>
-        <div className="flex items-center gap-2">
-          <span>🟧web3 build developer</span>
+      </CardHeader>
+
+      <CardContent className="px-6 pt-0 pb-6">
+        <div className="flex flex-col gap-1.5 text-[14px] text-foreground">
+          <p>
+            🟩 create{" "}
+            <Link
+              href="https://ccoolha.com/"
+              target="_blank"
+              className="transition-all hover:text-primary hover:underline"
+            >
+              coolha.com
+            </Link>
+          </p>
+          <p>🟧 web3 build developer</p>
         </div>
-      </div>
-    </div>
+      </CardContent>
+    </Card>
   );
 }
