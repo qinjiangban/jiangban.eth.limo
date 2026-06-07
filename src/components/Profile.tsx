@@ -44,7 +44,7 @@ export default function Profile() {
           <p>
             🟩 create{" "}
             <Link
-              href="https://ccoolha.com/"
+              href="https://coolha.com/"
               target="_blank"
               className="transition-all hover:text-primary hover:underline"
             >
