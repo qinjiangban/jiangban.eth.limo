@@ -1,4 +1,5 @@
 "use client";
+import BackHome from "@/components/BackHome";
 
 import { useState, useEffect } from "react";
 import { Attribution } from "ox/erc8021";
@@ -200,19 +201,12 @@ export default function Web3TipPage() {
             <main className="w-full max-w-[500px] flex flex-col items-center gap-4 h-full">
 
 
-
                 {/* 打赏面板 */}
                 <div className="w-full bg-white rounded-[24px] p-5 sm:p-6 shadow-sm flex flex-col items-center text-center flex-1 overflow-y-auto hide-scrollbar">
                     {/* 返回按钮 */}
-                    <div className="w-full flex justify-start shrink-0">
-                        <Link href="/" className="flex items-center gap-2 text-zinc-500 hover:text-brand transition-colors py-2">
-                            <FiArrowLeft className="w-5 h-5" />
-                            <span className="font-medium">返回主页</span>
-                        </Link>
+                    <div className="w-full flex justify-start shrink-0 my-1">
+                        <BackHome />
                     </div>
-
-
-
 
                     {/* 收款地址和 ENS 展示区 */}
                     <div className="w-full bg-zinc-50 rounded-[16px] p-4 mb-4 text-left border border-zinc-100 flex flex-col gap-3 shrink-0">

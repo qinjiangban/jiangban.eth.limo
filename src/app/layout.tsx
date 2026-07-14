@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jiangban Qin - Web3 Builder & Developer",
+  title: "Jiangban Qin - 覃江扮 - jiangban.eth",
   description: "Personal website of Jiangban, Qin, a Web3 Builder & Developer. ENS: jiangban.eth",
   other: {
     'base:app_id': '6a0c45816b7916c4b4095207',

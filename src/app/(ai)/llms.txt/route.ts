@@ -1,4 +1,4 @@
-import { siteProfile } from "@/lib/agent-profile";
+import { siteProfile } from "@/app/for-agents/agent-profile";
 
 export const dynamic = "force-static";
 

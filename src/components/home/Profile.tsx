@@ -48,10 +48,10 @@ export default function Profile() {
               target="_blank"
               className="transition-all hover:text-primary hover:underline"
             >
-              coolha.com
+              coolha.com↗
             </Link>
           </p>
-          <p>🟧 web3 build developer</p>
+          <p>🟧 web4 build developer</p>
         </div>
       </CardContent>
     </Card>

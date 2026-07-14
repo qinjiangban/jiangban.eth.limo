@@ -1,3 +1,8 @@
+
+
+import {  BotIcon, BotOffIcon, CalendarIcon } from "lucide-react";
+import LinkCardArrow from "../ui/LinkCardArrow";
+
 const profileText = `# 覃江扮 Jiangban Qin
 2002年射手座生于广西
 语言:简体中文、壮语、桂柳话（西南官话分支）
@@ -486,6 +491,21 @@ export default function HumanReadableProfile() {
 
   return (
     <section className="w-full">
+
+
+      <div className="my-4 gap-4 flex flex-wrap">
+        <LinkCardArrow
+          href="/experience"
+          title="查看工作教育经历时间线"
+          icon={<CalendarIcon />}
+        />
+        <LinkCardArrow
+          href="/for-agents"
+          title="面向Agent读取"
+          icon={<BotIcon />}
+        />
+      </div>
+
 
       <div className="space-y-4">
         <IntroCard blocks={intro} />

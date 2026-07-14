@@ -1,5 +1,7 @@
 import Link from "next/link";
-import { siteProfile } from "@/lib/agent-profile";
+import { siteProfile } from "@/app/for-agents/agent-profile";
+import { ChevronLeftIcon } from "lucide-react";
+import BackHome from "@/components/BackHome";
 
 function SectionCard({
   title,
@@ -18,8 +20,9 @@ function SectionCard({
 
 export default function ForAgentsPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center px-4 py-12 font-sans selection:bg-brand selection:text-white">
+    <div className="flex min-h-screen flex-col items-center p-4 font-sans selection:bg-brand selection:text-white">
       <main className="flex w-full max-w-[760px] flex-col gap-6">
+        <BackHome />
         <section className="w-full rounded-[28px] bg-white p-7 shadow-sm">
           <div className="mb-4 inline-flex rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold tracking-[0.2em] text-brand">
             For Agents / 面向智能体

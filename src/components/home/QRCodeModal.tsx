@@ -49,12 +49,6 @@ export default function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
             />
           </div>
 
-          <Badge
-            variant="secondary"
-            className="h-auto rounded-full bg-brand/10 px-3 py-1 text-brand"
-          >
-            使用微信扫码关注
-          </Badge>
         </div>
       </DialogContent>
     </Dialog>

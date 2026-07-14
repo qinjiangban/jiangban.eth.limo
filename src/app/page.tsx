@@ -1,8 +1,8 @@
-import Profile from "@/components/Profile";
-import SocialLogo from "@/components/SocialLogo";
-import SocialLinks from "@/components/SocialLinks";
-import HumanReadableProfile from "@/components/HumanReadableProfile";
-import SiteBadge from "@/components/SiteBadge";
+import Profile from "@/components/home/Profile";
+import SocialLogo from "@/components/home/SocialLogo";
+import SocialLinks from "@/components/home/SocialLinks";
+import HumanReadableProfile from "@/components/home/HumanReadableProfile";
+import SiteBadge from "@/components/home/SiteBadge";
 
 export default function Home() {
   return (
