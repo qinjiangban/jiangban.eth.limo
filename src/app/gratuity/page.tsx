@@ -206,6 +206,7 @@ export default function Web3TipPage() {
                     {/* 返回按钮 */}
                     <div className="w-full flex justify-start shrink-0 my-1">
                         <BackHome />
+                        <h1 className="p-2 text-center text-[13px] font-bold text-zinc-800">支持EVM主流网络</h1>
                     </div>
 
                     {/* 收款地址和 ENS 展示区 */}

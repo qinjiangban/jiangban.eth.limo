@@ -142,27 +142,24 @@ function PortfolioGallery({ images }: { images: NonNullable<Experience["portfoli
       >
         <DialogContent
           showCloseButton={false}
-          className="flex max-w-[95vw] items-center justify-center gap-0 border-0 bg-transparent p-0 shadow-none sm:max-w-[95vw]"
+          className="flex cursor-pointer max-w-[95vw] items-center justify-center gap-0 border-0 bg-transparent p-0 shadow-none sm:max-w-[95vw]"
+          onClick={() => setSelectedIndex(null)}
         >
           <DialogTitle className="sr-only">
             {selectedIndex !== null ? images[selectedIndex].alt : "作品集"}
           </DialogTitle>
           {selectedIndex !== null && (
-            <button
-              type="button"
-              onClick={() => setSelectedIndex(null)}
-              className="overflow-hidden rounded-2xl bg-black/90 cursor-pointer"
-            >
+            <div className="overflow-hidden rounded-2xl bg-black/90">
               <Image
                 src={images[selectedIndex].src}
                 alt={images[selectedIndex].alt}
                 width={0}
                 height={0}
                 sizes="95vw"
-                className="max-h-[95vh] h-auto w-auto object-contain"
+                className="max-h-[95vh] h-auto w-auto object-contain pointer-events-none"
                 unoptimized
               />
-            </button>
+            </div>
           )}
         </DialogContent>
       </Dialog>
@@ -173,10 +170,45 @@ function PortfolioGallery({ images }: { images: NonNullable<Experience["portfoli
 /** 教育 / 事件的简洁标记 */
 function EducationMarker({ experience }: { experience: Experience }) {
   return (
-    <div className="flex items-center gap-3">
-      <span className="inline-flex h-7 items-center rounded-full border border-zinc-200 bg-zinc-50 px-3 text-[13px] font-medium text-zinc-600">
-        {experience.role}
-      </span>
+    <div className="flex-1 rounded-[20px] border border-white/70 bg-white/95 p-5 shadow-sm ring-black/5 backdrop-blur">
+      <div className="mb-2 flex flex-wrap items-center gap-2">
+        <span className="text-base font-bold tracking-tight text-foreground">
+          {experience.role}
+        </span>
+        {experience.type && (
+          <span className="inline-flex h-5 items-center rounded-full border border-zinc-300 bg-zinc-50 px-2.5 text-[11px] font-medium text-zinc-500">
+            {experience.type}
+          </span>
+        )}
+      </div>
+
+      {experience.org && (
+        <p className="mb-2 text-[14px] font-medium text-zinc-600">
+          {experience.org}
+        </p>
+      )}
+
+      {experience.from && experience.to && (
+        <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-zinc-500">
+          <span className="inline-flex items-center gap-1">
+            <ClockIcon className="size-3.5" />
+            {experience.from} - {experience.to}
+            {experience.duration && ` · ${experience.duration}`}
+          </span>
+          {experience.location && (
+            <span className="inline-flex items-center gap-1">
+              <MapPinIcon className="size-3.5" />
+              {experience.location}
+            </span>
+          )}
+        </div>
+      )}
+
+      {experience.description && (
+        <p className="whitespace-pre-line text-[13px] leading-relaxed text-zinc-600">
+          {experience.description}
+        </p>
+      )}
     </div>
   );
 }
