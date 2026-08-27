@@ -36,11 +36,11 @@ export default function SocialLinks() {
       title: "YouTube",
       icon: <FaYoutube className="w-6 h-6 text-[#FF0000]" />
     },
-    {
+/*     {
       href: "https://jiangban.myshopify.com/",
       title: "Shopify",
       icon: <FaShopify className="w-6 h-6 text-[#95BF47]" />
-    }
+    } */
     /*     {
           href: "https://www.tiktok.com/@qinjiangban",
           title: "Tiktok",
