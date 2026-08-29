@@ -20,7 +20,7 @@ function SectionCard({
 
 export default function ForAgentsPage() {
   return (
-    <div className="flex min-h-screen flex-col items-center p-4 font-sans selection:bg-brand selection:text-white">
+    <div className="flex flex-1 flex-col items-center p-4 font-sans selection:bg-brand selection:text-white">
       <main className="flex w-full max-w-[760px] flex-col gap-6">
         <BackHome />
         <section className="w-full rounded-[28px] bg-white p-7 shadow-sm">

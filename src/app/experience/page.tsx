@@ -17,7 +17,7 @@ export default function ExperiencePage() {
   );
 
   return (
-    <div className="flex min-h-screen flex-col items-center p-4 font-sans selection:bg-brand selection:text-white">
+    <div className="flex flex-1 flex-col items-center p-4 font-sans selection:bg-brand selection:text-white">
       <main className="flex w-full max-w-[640px] flex-col gap-8">
         {/* 顶部导航 */}
         <div className="flex items-center gap-3">

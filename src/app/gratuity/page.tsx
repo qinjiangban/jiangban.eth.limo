@@ -197,7 +197,7 @@ export default function Web3TipPage() {
     };
 
     return (
-        <div className="flex flex-col h-screen items-center justify-center p-4 font-sans selection:bg-brand selection:text-white overflow-hidden">
+        <div className="flex min-h-0 flex-1 flex-col items-center justify-center p-4 font-sans selection:bg-brand selection:text-white overflow-hidden">
             <main className="w-full max-w-[500px] flex flex-col items-center gap-4 h-full">
 
 

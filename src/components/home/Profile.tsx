@@ -25,14 +25,6 @@ export default function Profile() {
         </Link>
 
         <div className="flex flex-col items-start text-left">
-          <Avatar
-            size="lg"
-            className="mb-4 size-16 shadow-sm after:border-black/5"
-          >
-            <AvatarImage src="/avatar.png" alt="jiangban.eth avatar" />
-            <AvatarFallback>JQ</AvatarFallback>
-          </Avatar>
-
           <CardTitle className="mb-1 text-2xl font-bold tracking-tight text-foreground">
             Jiangban Qin
           </CardTitle>
