@@ -44,9 +44,13 @@ export default function LinkCard({ href, title, icon, onClick }: LinkCardProps) 
     );
   }
 
+  if (!href) {
+    return null;
+  }
+
   return (
     <Link
-      href={href || ""}
+      href={href}
       className="group block w-full"
       target="_blank"
       rel="noreferrer"

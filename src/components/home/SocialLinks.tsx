@@ -1,51 +1,49 @@
 "use client";
 
-import { useState } from "react";
-import { FaGithub, FaLinkedin, FaTiktok, FaYoutube } from "react-icons/fa";
-import { FaShopify, FaSquareXTwitter } from "react-icons/fa6";
+import { useState, type ReactNode } from "react";
+import { FaGithub, FaWeixin, FaYoutube } from "react-icons/fa";
+import { FaSquareXTwitter } from "react-icons/fa6";
 import { RiWechatChannelsLine } from "react-icons/ri";
 import LinkCard from "../ui/LinkCard";
 import QRCodeModal from "./QRCodeModal";
 
-export default function SocialLinks() {
-  const [isWeChatModalOpen, setIsWeChatModalOpen] = useState(false);
+type SocialLink = {
+  title: string;
+  icon: ReactNode;
+  href?: string;
+  onClick?: () => void;
+};
 
-  const links = [
+export default function SocialLinks() {
+  const [isOAModalOpen, setIsOAModalOpen] = useState(false);
+  const [isChannelsModalOpen, setIsChannelsModalOpen] = useState(false);
+
+  const links: SocialLink[] = [
     {
-      onClick: () => setIsWeChatModalOpen(true),
-      title: "WeChat",
-      icon: <RiWechatChannelsLine className="w-6 h-6 text-[#fa9d3b]" />
+      onClick: () => setIsOAModalOpen(true),
+      title: "公众号",
+      icon: <FaWeixin className="w-6 h-6 text-[#07C160]" />,
+    },
+    {
+      onClick: () => setIsChannelsModalOpen(true),
+      title: "视频号",
+      icon: <RiWechatChannelsLine className="w-6 h-6 text-[#fa9d3b]" />,
     },
     {
       href: "https://x.com/qinjiangban",
       title: "X",
-      icon: <FaSquareXTwitter className="w-6 h-6 text-black" />
+      icon: <FaSquareXTwitter className="w-6 h-6 text-black" />,
     },
     {
       href: "https://github.com/qinjiangban",
       title: "Github",
-      icon: <FaGithub className="w-6 h-6 text-black" />
+      icon: <FaGithub className="w-6 h-6 text-black" />,
     },
-/*     {
-      href: "https://www.linkedin.com/in/qinjiangban/",
-      title: "Linkedin",
-      icon: <FaLinkedin className="w-6 h-6 text-[#0A66C2]" />
-    }, */
     {
       href: "https://www.youtube.com/@qinjiangban",
       title: "YouTube",
-      icon: <FaYoutube className="w-6 h-6 text-[#FF0000]" />
+      icon: <FaYoutube className="w-6 h-6 text-[#FF0000]" />,
     },
-/*     {
-      href: "https://jiangban.myshopify.com/",
-      title: "Shopify",
-      icon: <FaShopify className="w-6 h-6 text-[#95BF47]" />
-    } */
-    /*     {
-          href: "https://www.tiktok.com/@qinjiangban",
-          title: "Tiktok",
-          icon: <FaTiktok className="w-6 h-6 text-[#000000]" />
-        } */
   ];
 
   return (
@@ -63,8 +61,21 @@ export default function SocialLinks() {
       </div>
 
       <QRCodeModal
-        isOpen={isWeChatModalOpen}
-        onClose={() => setIsWeChatModalOpen(false)}
+        isOpen={isOAModalOpen}
+        onClose={() => setIsOAModalOpen(false)}
+        title="公众号"
+        description="使用微信扫一扫关注公众号"
+        imageSrc="/wechat-oa-qr.jpg"
+        imageAlt="公众号二维码"
+      />
+
+      <QRCodeModal
+        isOpen={isChannelsModalOpen}
+        onClose={() => setIsChannelsModalOpen(false)}
+        title="视频号"
+        description="使用微信扫一扫关注视频号"
+        imageSrc="/wechat-qr.png"
+        imageAlt="视频号二维码"
       />
     </>
   );

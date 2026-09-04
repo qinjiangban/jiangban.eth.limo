@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { FaWeixin } from "react-icons/fa";
 
-import { Badge } from "@/components/ui/badge";
 import {
   Dialog,
   DialogContent,
@@ -15,9 +14,20 @@ import {
 interface QRCodeModalProps {
   isOpen: boolean;
   onClose: () => void;
+  title: string;
+  description: string;
+  imageSrc: string;
+  imageAlt?: string;
 }
 
-export default function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
+export default function QRCodeModal({
+  isOpen,
+  onClose,
+  title,
+  description,
+  imageSrc,
+  imageAlt = "QR code",
+}: QRCodeModalProps) {
   return (
     <Dialog
       open={isOpen}
@@ -31,24 +41,23 @@ export default function QRCodeModal({ isOpen, onClose }: QRCodeModalProps) {
             <FaWeixin className="size-7" />
           </div>
 
-          <DialogTitle className="text-xl">WeChat Channel</DialogTitle>
+          <DialogTitle className="text-xl">{title}</DialogTitle>
           <DialogDescription className="max-w-[22rem]">
-            Scan the QR code below using WeChat to follow my channel.
+            {description}
           </DialogDescription>
         </DialogHeader>
 
         <div className="flex flex-col items-center gap-4">
           <div className="overflow-hidden rounded-[24px] border border-border bg-muted/60 p-3 shadow-inner">
             <Image
-              src="/wechat-qr.png"
-              alt="WeChat QR"
+              src={imageSrc}
+              alt={imageAlt}
               width={208}
               height={208}
               className="size-52 rounded-[18px] object-cover"
               priority
             />
           </div>
-
         </div>
       </DialogContent>
     </Dialog>
