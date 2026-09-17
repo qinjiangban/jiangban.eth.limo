@@ -4,10 +4,11 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Languages, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import { FaSquareXTwitter } from "react-icons/fa6";
 
 import { cn } from "@/lib/utils";
-import { useLanguage } from "@/components/LanguageProvider";
+import { RiChat3Fill } from "react-icons/ri";
 
 /**
  * 滚动超过该阈值后，头部由「铺满全宽的展开态」切换为「圆角浮层态」。
@@ -16,14 +17,13 @@ import { useLanguage } from "@/components/LanguageProvider";
 const SCROLL_THRESHOLD = 16;
 
 const NAV_LINKS = [
-  { href: "/", label: { zh: "首页", en: "Home" } },
-  { href: "/experience", label: { zh: "经历", en: "Experience" } },
-  { href: "/cooperation", label: { zh: "合作", en: "Cooperation" } },
+  { href: "/", label: "首页" },
+  { href: "/experience", label: "经历" },
+  { href: "/cooperation", label: "合作" },
 ] as const;
 
 export default function SiteHeader() {
   const pathname = usePathname();
-  const { lang, toggle } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -148,7 +148,7 @@ export default function SiteHeader() {
         {/* 桌面端导航 */}
         <nav
           aria-label="主导航"
-          className="hidden items-center gap-0.5 md:flex"
+          className="hidden flex-1 items-center justify-center gap-0.5 md:flex"
         >
           {NAV_LINKS.map((item) => {
             const active = pathname === item.href;
@@ -164,7 +164,7 @@ export default function SiteHeader() {
                   navLinkTone(active),
                 )}
               >
-                {item.label[lang]}
+                {item.label}
               </Link>
             );
           })}
@@ -172,10 +172,11 @@ export default function SiteHeader() {
 
         {/* 右侧操作区 */}
         <div className="flex shrink-0 items-center gap-1">
-          <button
-            type="button"
-            onClick={toggle}
-            aria-label="切换语言 / Switch language"
+          <a
+            href="https://x.com/i/chat/1288256201445130240-1288256201445130240"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="通过 X 联系我"
             className={cn(
               "hidden h-9 items-center gap-1.5 rounded-full px-4 text-sm font-semibold outline-none transition-colors duration-300 focus-visible:ring-2 sm:inline-flex",
               focusRing,
@@ -184,9 +185,9 @@ export default function SiteHeader() {
                 : "bg-white/15 text-white ring-1 ring-white/40 hover:bg-white/25",
             )}
           >
-            <Languages className="size-4" aria-hidden />
-            {lang === "zh" ? "翻译" : "Translate"}
-          </button>
+            <RiChat3Fill   className="size-4" aria-hidden />
+            联系
+          </a>
 
           <button
             ref={menuButtonRef}
@@ -237,7 +238,7 @@ export default function SiteHeader() {
                           : "text-zinc-700 hover:bg-zinc-100",
                       )}
                     >
-                      {item.label[lang]}
+                      {item.label}
                       {active ? (
                         <span className="size-1.5 rounded-full bg-brand" />
                       ) : null}
@@ -246,17 +247,16 @@ export default function SiteHeader() {
                 );
               })}
             </ul>
-            <button
-              type="button"
-              onClick={() => {
-                toggle();
-                closeMenu();
-              }}
+            <a
+              href="https://x.com/qinjiangban"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={closeMenu}
               className="mt-2 flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-brand px-4 text-sm font-semibold text-white transition-colors hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-brand/60"
             >
-              <Languages className="size-4" aria-hidden />
-              {lang === "zh" ? "翻译" : "Translate"}
-            </button>
+              <FaSquareXTwitter className="size-4" aria-hidden />
+              通过 X 联系
+            </a>
           </div>
         </div>
       </div>
