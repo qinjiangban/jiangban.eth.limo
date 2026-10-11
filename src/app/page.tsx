@@ -4,6 +4,7 @@ import SocialLinks from "@/components/home/SocialLinks";
 import HumanReadableProfile from "@/components/home/HumanReadableProfile";
 import SiteBadge from "@/components/home/SiteBadge";
 import NavLink from "@/components/home/NavLink";
+import LatestPosts from "@/components/home/LatestPosts";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         
         <HumanReadableProfile />
         <NavLink />
+
 
         <div className="flex flex-col items-center gap-1">
           <SiteBadge />

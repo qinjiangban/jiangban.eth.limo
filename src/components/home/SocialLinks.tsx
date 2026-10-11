@@ -20,16 +20,6 @@ export default function SocialLinks() {
 
   const links: SocialLink[] = [
     {
-      onClick: () => setIsOAModalOpen(true),
-      title: "公众号",
-      icon: <FaWeixin className="w-6 h-6 text-[#07C160]" />,
-    },
-    {
-      onClick: () => setIsChannelsModalOpen(true),
-      title: "视频号",
-      icon: <RiWechatChannelsLine className="w-6 h-6 text-[#fa9d3b]" />,
-    },
-    {
       href: "https://x.com/qinjiangban",
       title: "X",
       icon: <FaSquareXTwitter className="w-6 h-6 text-black" />,
@@ -43,6 +33,16 @@ export default function SocialLinks() {
       href: "https://www.youtube.com/@qinjiangban",
       title: "YouTube",
       icon: <FaYoutube className="w-6 h-6 text-[#FF0000]" />,
+    },
+    {
+      onClick: () => setIsChannelsModalOpen(true),
+      title: "视频号",
+      icon: <RiWechatChannelsLine className="w-6 h-6 text-[#fa9d3b]" />,
+    },
+    {
+      onClick: () => setIsOAModalOpen(true),
+      title: "公众号",
+      icon: <FaWeixin className="w-6 h-6 text-[#07C160]" />,
     },
   ];
 

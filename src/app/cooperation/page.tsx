@@ -360,7 +360,7 @@ export default function CooperationPage() {
             rel="noreferrer noopener"
             className="inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-brand/25 transition-colors hover:bg-brand/90"
           >
-            通过 X 联系
+            通过 X Chat 联系
             <RiChat3Fill  className="size-4" />
           </Link>
         </section>

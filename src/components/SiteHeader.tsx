@@ -173,7 +173,7 @@ export default function SiteHeader() {
         {/* 右侧操作区 */}
         <div className="flex shrink-0 items-center gap-1">
           <a
-            href="https://x.com/i/chat/1288256201445130240-1288256201445130240"
+            href="https://www.x.com/qinjiangban?n=66162838"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="通过 X 联系我"
@@ -185,7 +185,7 @@ export default function SiteHeader() {
                 : "bg-white/15 text-white ring-1 ring-white/40 hover:bg-white/25",
             )}
           >
-            <RiChat3Fill   className="size-4" aria-hidden />
+            <RiChat3Fill className="size-4" aria-hidden />
             联系
           </a>
 
@@ -248,14 +248,14 @@ export default function SiteHeader() {
               })}
             </ul>
             <a
-              href="https://x.com/qinjiangban"
+              href="https://www.x.com/qinjiangban?n=66162838"
               target="_blank"
               rel="noopener noreferrer"
               onClick={closeMenu}
               className="mt-2 flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-brand px-4 text-sm font-semibold text-white transition-colors hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-brand/60"
             >
-              <FaSquareXTwitter className="size-4" aria-hidden />
-              通过 X 联系
+              <RiChat3Fill className="size-4" aria-hidden />
+              联系
             </a>
           </div>
         </div>
