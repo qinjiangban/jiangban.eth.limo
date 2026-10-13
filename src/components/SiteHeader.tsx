@@ -109,7 +109,7 @@ export default function SiteHeader() {
         >
           <span
             className={cn(
-              "relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full transition-[box-shadow] duration-300",
+              "relative flex size-9 shrink-0 items-center justify-center overflow-hidden rounded-full transition-shadow duration-300",
               floating ? "ring-1 ring-zinc-900/10" : "ring-2 ring-white/60",
             )}
           >

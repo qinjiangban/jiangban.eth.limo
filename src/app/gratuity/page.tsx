@@ -80,7 +80,7 @@ export default function GratuityPage() {
 
   return (
     <div className="flex min-h-0 flex-1 flex-col items-center justify-center p-4 font-sans selection:bg-brand selection:text-white">
-      <main className="flex w-full max-w-[500px] flex-col items-center gap-4">
+      <main className="flex w-full max-w-125 flex-col items-center gap-4">
         <div className="flex w-full flex-col gap-5 rounded-[24px] bg-white p-5 shadow-sm sm:p-6">
           {/* 顶部 */}
           <div className="flex items-center justify-between">
@@ -149,7 +149,7 @@ export default function GratuityPage() {
                   </h2>
                   <p className="text-[12px] text-zinc-500">{method.subtitle}</p>
                 </div>
-                <div className="mx-auto flex max-w-[220px] items-center justify-center overflow-hidden rounded-2xl bg-white p-2">
+                <div className="mx-auto flex max-w-55 items-center justify-center overflow-hidden rounded-2xl bg-white p-2">
                   <Image
                     src={method.qr}
                     alt={method.alt}

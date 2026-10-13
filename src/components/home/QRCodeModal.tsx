@@ -42,7 +42,7 @@ export default function QRCodeModal({
           </div>
 
           <DialogTitle className="text-xl">{title}</DialogTitle>
-          <DialogDescription className="max-w-[22rem]">
+          <DialogDescription className="max-w-88">
             {description}
           </DialogDescription>
         </DialogHeader>

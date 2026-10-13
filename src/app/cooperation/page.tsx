@@ -307,7 +307,7 @@ export default function CooperationPage() {
         </section>
 
         {/* 联系 */}
-        <section className="rounded-[24px] border border-brand/15 bg-gradient-to-br from-white/95 to-brand/5 p-6 shadow-sm ring-black/5 backdrop-blur">
+        <section className="rounded-[24px] border border-brand/15 bg-linear-to-br from-white/95 to-brand/5 p-6 shadow-sm ring-black/5 backdrop-blur">
           <div className="mb-3 flex items-center gap-3">
             <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-brand text-white shadow-sm shadow-brand/25">
               <Mail className="size-5" />
@@ -399,7 +399,7 @@ function CapabilityCard({ capability }: { capability: Capability }) {
                   key={item}
                   className="flex items-start gap-2 text-[13px] leading-relaxed text-zinc-700"
                 >
-                  <span className="mt-[7px] size-1.5 shrink-0 rounded-full bg-brand" />
+                  <span className="mt-1.75 size-1.5 shrink-0 rounded-full bg-brand" />
                   <span>{item}</span>
                 </li>
               ))}
