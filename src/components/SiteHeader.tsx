@@ -4,11 +4,9 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { Menu, MessageCircle, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { RiChat3Fill } from "react-icons/ri";
 
 /**
  * 滚动超过该阈值后，头部由「铺满全宽的展开态」切换为「圆角浮层态」。
@@ -185,7 +183,7 @@ export default function SiteHeader() {
                 : "bg-white/15 text-white ring-1 ring-white/40 hover:bg-white/25",
             )}
           >
-            <RiChat3Fill className="size-4" aria-hidden />
+            <MessageCircle className="size-4" aria-hidden />
             联系
           </a>
 
@@ -254,7 +252,7 @@ export default function SiteHeader() {
               onClick={closeMenu}
               className="mt-2 flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-brand px-4 text-sm font-semibold text-white transition-colors hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-brand/60"
             >
-              <RiChat3Fill className="size-4" aria-hidden />
+              <MessageCircle className="size-4" aria-hidden />
               联系
             </a>
           </div>

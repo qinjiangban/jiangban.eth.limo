@@ -1,9 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { FaGithub, FaWeixin, FaYoutube } from "react-icons/fa";
-import { FaSquareXTwitter } from "react-icons/fa6";
-import { RiWechatChannelsLine } from "react-icons/ri";
+import { GitHubIcon, WeChatIcon, YouTubeIcon, XBrandIcon, ShipinhaoIcon } from "@/components/icons";
 import LinkCard from "../ui/LinkCard";
 import QRCodeModal from "./QRCodeModal";
 
@@ -22,27 +20,27 @@ export default function SocialLinks() {
     {
       href: "https://x.com/qinjiangban",
       title: "X",
-      icon: <FaSquareXTwitter className="w-6 h-6 text-black" />,
+      icon: <XBrandIcon className="w-6 h-6 text-black" />,
     },
     {
       href: "https://github.com/qinjiangban",
       title: "Github",
-      icon: <FaGithub className="w-6 h-6 text-black" />,
+      icon: <GitHubIcon className="w-6 h-6 text-black" />,
     },
     {
       href: "https://www.youtube.com/@qinjiangban",
       title: "YouTube",
-      icon: <FaYoutube className="w-6 h-6 text-[#FF0000]" />,
+      icon: <YouTubeIcon className="w-6 h-6 text-[#FF0000]" />,
     },
     {
       onClick: () => setIsChannelsModalOpen(true),
       title: "视频号",
-      icon: <RiWechatChannelsLine className="w-6 h-6 text-[#fa9d3b]" />,
+      icon: <ShipinhaoIcon />,
     },
     {
       onClick: () => setIsOAModalOpen(true),
       title: "公众号",
-      icon: <FaWeixin className="w-6 h-6 text-[#07C160]" />,
+      icon: <WeChatIcon className="w-6 h-6 text-[#07C160]" />,
     },
   ];
 

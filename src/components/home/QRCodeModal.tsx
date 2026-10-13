@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { FaWeixin } from "react-icons/fa";
+import { WeChatIcon } from "@/components/icons";
 
 import {
   Dialog,
@@ -38,7 +38,7 @@ export default function QRCodeModal({
       <DialogContent className="max-w-sm rounded-[28px] border-white/70 bg-white/95 p-8 shadow-2xl shadow-black/10">
         <DialogHeader className="items-center text-center">
           <div className="flex size-12 items-center justify-center rounded-2xl bg-[#07C160]/10 text-[#07C160]">
-            <FaWeixin className="size-7" />
+            <WeChatIcon className="size-7" />
           </div>
 
           <DialogTitle className="text-xl">{title}</DialogTitle>

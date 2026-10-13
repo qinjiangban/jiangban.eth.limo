@@ -8,11 +8,11 @@ import {
   Code2,
   Landmark,
   Mail,
+  MessageCircle,
   Search,
   TrendingUp,
   Wallet,
 } from "lucide-react";
-import { RiChat3Fill } from "react-icons/ri";
 
 export const metadata: Metadata = {
   title: "商务合作 - Jiangban Qin",
@@ -355,13 +355,13 @@ export default function CooperationPage() {
           </div>
 
           <Link
-            href="https://x.com/i/chat/1288256201445130240-1288256201445130240"
+            href="https://x.com/qinjiangban?n=66162838"
             target="_blank"
             rel="noreferrer noopener"
             className="inline-flex items-center gap-1.5 rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white shadow-sm shadow-brand/25 transition-colors hover:bg-brand/90"
           >
+            <MessageCircle className="size-4" />
             通过 X Chat 联系
-            <RiChat3Fill  className="size-4" />
           </Link>
         </section>
       </main>
