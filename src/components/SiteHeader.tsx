@@ -4,9 +4,18 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, MessageCircle, X } from "lucide-react";
+import { Languages, Menu, MessageCircle, X } from "lucide-react";
 
 import { cn } from "@/lib/utils";
+import {
+  hreflang,
+  htmlLang,
+  localizePath,
+  otherLocale,
+  switchLocalePath,
+} from "@/lib/i18n/config";
+import type { Locale } from "@/lib/i18n/config";
+import { messages } from "@/lib/i18n/messages";
 
 /**
  * 滚动超过该阈值后，头部由「铺满全宽的展开态」切换为「圆角浮层态」。
@@ -14,18 +23,25 @@ import { cn } from "@/lib/utils";
  */
 const SCROLL_THRESHOLD = 16;
 
+/** 导航项使用语言无关路径，渲染时再按当前语种加上 /en 前缀 */
 const NAV_LINKS = [
-  { href: "/", label: "首页" },
-  { href: "/experience", label: "经历" },
-  { href: "/cooperation", label: "合作" },
+  { path: "/", key: "home" },
+  { path: "/experience", key: "experience" },
+  { path: "/cooperation", key: "cooperation" },
 ] as const;
 
-export default function SiteHeader() {
+export default function SiteHeader({ locale }: { locale: Locale }) {
   const pathname = usePathname();
+  const m = messages[locale];
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  const targetLocale = otherLocale(locale);
+  const targetLang = htmlLang[targetLocale];
+  /** 语言切换链接：保持当前页面不变，只切换语言前缀 */
+  const languageHref = switchLocalePath(pathname ?? "/", targetLocale);
 
   /**
    * 用 requestAnimationFrame 节流 scroll 事件，避免频繁 setState 造成的布局抖动。
@@ -97,11 +113,11 @@ export default function SiteHeader() {
             : "max-w-full rounded-none border border-transparent bg-transparent px-0",
         )}
       >
-        {/* 品牌区 */}
+        {/* 品牌区：Jiangban Qin / jiangban.eth 为固定英文名，不随语言翻译 */}
         <Link
-          href="/"
+          href={localizePath(locale, "/")}
           onClick={closeMenu}
-          aria-label="Jiangban Qin 首页"
+          aria-label={m.header.brandHomeAria}
           className={cn(
             "flex min-w-0 items-center gap-2.5 rounded-full py-1 pl-0 pr-0 outline-none focus-visible:ring-2",
             focusRing,
@@ -145,15 +161,16 @@ export default function SiteHeader() {
 
         {/* 桌面端导航 */}
         <nav
-          aria-label="主导航"
+          aria-label={m.header.mainNavAria}
           className="hidden flex-1 items-center justify-center gap-0.5 md:flex"
         >
           {NAV_LINKS.map((item) => {
-            const active = pathname === item.href;
+            const href = localizePath(locale, item.path);
+            const active = pathname === href;
             return (
               <Link
-                key={item.href}
-                href={item.href}
+                key={item.path}
+                href={href}
                 onClick={closeMenu}
                 aria-current={active ? "page" : undefined}
                 className={cn(
@@ -162,7 +179,7 @@ export default function SiteHeader() {
                   navLinkTone(active),
                 )}
               >
-                {item.label}
+                {m.header.nav[item.key]}
               </Link>
             );
           })}
@@ -170,11 +187,30 @@ export default function SiteHeader() {
 
         {/* 右侧操作区 */}
         <div className="flex shrink-0 items-center gap-1">
+          {/* 中英切换：指向另一语言下同一页面的独立静态 URL */}
+          <Link
+            href={languageHref}
+            hrefLang={hreflang[targetLocale]}
+            onClick={closeMenu}
+            aria-label={m.header.languageToggleAria}
+            title={m.header.languageToggleTitle}
+            className={cn(
+              "inline-flex h-9 items-center gap-1 rounded-full px-3 text-sm font-semibold outline-none transition-colors duration-300 focus-visible:ring-2",
+              focusRing,
+              floating
+                ? "text-zinc-600 ring-1 ring-zinc-900/10 hover:bg-zinc-900/5 hover:text-zinc-900"
+                : "text-white ring-1 ring-white/40 hover:bg-white/15",
+            )}
+          >
+            <Languages className="size-4" aria-hidden />
+            <span lang={targetLang}>{m.header.languageToggle}</span>
+          </Link>
+
           <a
             href="https://www.x.com/qinjiangban?n=66162838"
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="通过 X 联系我"
+            aria-label={m.header.contactAria}
             className={cn(
               "hidden h-9 items-center gap-1.5 rounded-full px-4 text-sm font-semibold outline-none transition-colors duration-300 focus-visible:ring-2 sm:inline-flex",
               focusRing,
@@ -184,7 +220,7 @@ export default function SiteHeader() {
             )}
           >
             <MessageCircle className="size-4" aria-hidden />
-            联系
+            {m.header.contact}
           </a>
 
           <button
@@ -193,7 +229,7 @@ export default function SiteHeader() {
             onClick={toggleMenu}
             aria-expanded={menuOpen}
             aria-controls="site-mobile-menu"
-            aria-label={menuOpen ? "关闭导航菜单" : "打开导航菜单"}
+            aria-label={menuOpen ? m.header.closeMenu : m.header.openMenu}
             className={cn(
               "inline-flex size-10 items-center justify-center rounded-full outline-none transition-colors duration-300 focus-visible:ring-2 md:hidden",
               focusRing,
@@ -222,11 +258,12 @@ export default function SiteHeader() {
           <div className="rounded-3xl border border-white/70 bg-white/95 p-2 shadow-2xl shadow-zinc-900/15 backdrop-blur-xl">
             <ul className="flex flex-col">
               {NAV_LINKS.map((item) => {
-                const active = pathname === item.href;
+                const href = localizePath(locale, item.path);
+                const active = pathname === href;
                 return (
-                  <li key={item.href}>
+                  <li key={item.path}>
                     <Link
-                      href={item.href}
+                      href={href}
                       onClick={closeMenu}
                       aria-current={active ? "page" : undefined}
                       className={cn(
@@ -236,7 +273,7 @@ export default function SiteHeader() {
                           : "text-zinc-700 hover:bg-zinc-100",
                       )}
                     >
-                      {item.label}
+                      {m.header.nav[item.key]}
                       {active ? (
                         <span className="size-1.5 rounded-full bg-brand" />
                       ) : null}
@@ -244,6 +281,17 @@ export default function SiteHeader() {
                   </li>
                 );
               })}
+              <li>
+                <Link
+                  href={languageHref}
+                  hrefLang={hreflang[targetLocale]}
+                  onClick={closeMenu}
+                  className="mt-1 flex items-center gap-2 rounded-2xl px-3 py-2.5 text-sm font-medium text-zinc-700 outline-none transition-colors hover:bg-zinc-100 focus-visible:ring-2 focus-visible:ring-brand/60"
+                >
+                  <Languages className="size-4" aria-hidden />
+                  <span lang={targetLang}>{m.header.languageToggleName}</span>
+                </Link>
+              </li>
             </ul>
             <a
               href="https://www.x.com/qinjiangban?n=66162838"
@@ -253,7 +301,7 @@ export default function SiteHeader() {
               className="mt-2 flex h-11 w-full items-center justify-center gap-2 rounded-2xl bg-brand px-4 text-sm font-semibold text-white transition-colors hover:bg-brand/90 focus-visible:ring-2 focus-visible:ring-brand/60"
             >
               <MessageCircle className="size-4" aria-hidden />
-              联系
+              {m.header.contact}
             </a>
           </div>
         </div>

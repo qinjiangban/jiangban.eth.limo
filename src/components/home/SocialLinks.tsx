@@ -2,6 +2,8 @@
 
 import { useState, type ReactNode } from "react";
 import { GitHubIcon, WeChatIcon, YouTubeIcon, XBrandIcon, ShipinhaoIcon } from "@/components/icons";
+import { homeContent } from "@/lib/i18n/content/home";
+import { pick, type LocaleProps } from "@/lib/i18n/content/types";
 import LinkCard from "../ui/LinkCard";
 import QRCodeModal from "./QRCodeModal";
 
@@ -12,9 +14,10 @@ type SocialLink = {
   onClick?: () => void;
 };
 
-export default function SocialLinks() {
+export default function SocialLinks({ locale }: LocaleProps) {
   const [isOAModalOpen, setIsOAModalOpen] = useState(false);
   const [isChannelsModalOpen, setIsChannelsModalOpen] = useState(false);
+  const content = homeContent.socialLinks;
 
   const links: SocialLink[] = [
     {
@@ -34,12 +37,12 @@ export default function SocialLinks() {
     },
     {
       onClick: () => setIsChannelsModalOpen(true),
-      title: "视频号",
+      title: pick(content.channels, locale),
       icon: <ShipinhaoIcon />,
     },
     {
       onClick: () => setIsOAModalOpen(true),
-      title: "公众号",
+      title: pick(content.officialAccount, locale),
       icon: <WeChatIcon className="w-6 h-6 text-[#07C160]" />,
     },
   ];
@@ -61,19 +64,19 @@ export default function SocialLinks() {
       <QRCodeModal
         isOpen={isOAModalOpen}
         onClose={() => setIsOAModalOpen(false)}
-        title="公众号"
-        description="使用微信扫一扫关注公众号"
+        title={pick(content.officialAccount, locale)}
+        description={pick(content.officialAccountQrDescription, locale)}
         imageSrc="/wechat-oa-qr.jpg"
-        imageAlt="公众号二维码"
+        imageAlt={pick(content.officialAccountQrAlt, locale)}
       />
 
       <QRCodeModal
         isOpen={isChannelsModalOpen}
         onClose={() => setIsChannelsModalOpen(false)}
-        title="视频号"
-        description="使用微信扫一扫关注视频号"
+        title={pick(content.channels, locale)}
+        description={pick(content.channelsQrDescription, locale)}
         imageSrc="/wechat-qr.png"
-        imageAlt="视频号二维码"
+        imageAlt={pick(content.channelsQrAlt, locale)}
       />
     </>
   );

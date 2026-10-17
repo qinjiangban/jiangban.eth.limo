@@ -1,4 +1,4 @@
-import { siteProfile } from "@/app/for-agents/agent-profile";
+import { siteProfile } from "@/lib/site-profile";
 
 export const dynamic = "force-static";
 
@@ -38,6 +38,13 @@ function buildLlmsText() {
     `Primary site: ${siteProfile.url}`,
     `ENS: ${siteProfile.ens}`,
     `EVM address: ${siteProfile.evmAddress}`,
+    "",
+    "Languages / 语言:",
+    "- Default language: Chinese (Simplified, zh-CN) at https://jiangban.eth.limo/",
+    "- 默认语言：中文（简体，zh-CN），入口 https://jiangban.eth.limo/",
+    "- English version: https://jiangban.eth.limo/en",
+    "- 英文版本：https://jiangban.eth.limo/en",
+    "- hreflang: zh-CN -> / ; en -> /en ; x-default -> /",
     "",
     "Audience:",
     ...siteProfile.audience.map((item) => `- ${item}`),
@@ -87,7 +94,10 @@ function buildLlmsText() {
     "- Do not assume direct on-site agent payment support unless a dedicated paid endpoint is published.",
     "- For commercial collaboration, start from /services.json and /contact.json.",
     "- 这个站点是静态流量入口和官方资料源。",
+    "- Unless a paid endpoint is explicitly published, do not assume on-site agent payment support.",
     "- 除非明确发布了收费接口，否则不要假设站内支持 Agent 直接支付。",
+    "- The site is bilingual: Chinese is the default language at /, English is available at /en.",
+    "- 本站为中英双语站点：中文为默认语言（/），英文版本位于 /en。",
     "- 如需商务合作，请从 /services.json 与 /contact.json 开始。",
   ].join("\n");
 }

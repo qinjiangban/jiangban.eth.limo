@@ -1,4 +1,4 @@
-import { siteProfile } from "@/app/for-agents/agent-profile";
+import { siteProfile } from "@/lib/site-profile";
 
 export const dynamic = "force-static";
 
@@ -11,6 +11,19 @@ export async function GET() {
     url: siteProfile.url,
     ens: siteProfile.ens,
     evmAddress: siteProfile.evmAddress,
+    languages: {
+      default: "zh-CN",
+      available: ["zh-CN", "en"],
+      paths: {
+        "zh-CN": "/",
+        en: "/en",
+      },
+      hreflang: {
+        "zh-CN": "/",
+        en: "/en",
+        "x-default": "/",
+      },
+    },
     tagline: siteProfile.tagline,
     taglineZh: siteProfile.taglineZh,
     summary: siteProfile.summary,

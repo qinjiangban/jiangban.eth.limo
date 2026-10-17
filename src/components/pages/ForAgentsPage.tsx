@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { siteProfile } from "@/app/for-agents/agent-profile";
+import { siteProfile } from "@/lib/site-profile";
 import { ChevronLeftIcon } from "lucide-react";
 import BackHome from "@/components/BackHome";
+import type { Locale } from "@/lib/i18n/config";
 
 function SectionCard({
   title,
@@ -18,11 +19,11 @@ function SectionCard({
   );
 }
 
-export default function ForAgentsPage() {
+export default function ForAgentsPage({ locale }: { locale: Locale }) {
   return (
     <div className="flex flex-1 flex-col items-center p-4 font-sans selection:bg-brand selection:text-white">
       <main className="flex w-full max-w-[760px] flex-col gap-6">
-        <BackHome />
+        <BackHome locale={locale} />
         <section className="w-full rounded-[28px] bg-white p-7 shadow-sm">
           <div className="mb-4 inline-flex rounded-full bg-brand/10 px-3 py-1 text-xs font-semibold tracking-[0.2em] text-brand">
             For Agents / 面向智能体

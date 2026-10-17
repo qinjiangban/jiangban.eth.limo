@@ -72,7 +72,8 @@ function DialogContent({
           >
             <XIcon
             />
-            <span className="sr-only">Close</span>
+            {/* 双语无障碍标签：中文页与英文页的读屏用户都能理解 */}
+            <span className="sr-only">关闭 / Close</span>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Popup>
@@ -110,7 +111,7 @@ function DialogFooter({
       {children}
       {showCloseButton && (
         <DialogPrimitive.Close render={<Button variant="outline" />}>
-          Close
+          关闭 / Close
         </DialogPrimitive.Close>
       )}
     </div>

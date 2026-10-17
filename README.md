@@ -39,17 +39,47 @@ pnpm dev
 npm run dev
 ```
 
-在浏览器中打开 [http://localhost:3000](http://localhost:3000) 即可查看结果。
+在浏览器中打开 [http://localhost:3000](http://localhost:3000) 即可查看结果。中文页位于 `/`，英文页位于 `/en`。
+
+构建静态站点：
+
+```bash
+pnpm build
+# 产物输出到 out/ 目录
+```
+
+> 提示：部分受限沙箱环境无法为构建 worker 创建子进程（`spawn EPERM`）。此时可用 `NEXT_SKIP_TYPECHECK=1 NEXT_BUILD_WORKER_THREADS=1 pnpm build` 跳过构建期类型检查并改用 worker 线程，再单独执行 `pnpm exec tsc --noEmit` 校验类型；正常 CI / 本地环境无需设置这两个变量。
+
+## 🌐 中英双语（中文优先）
+
+- **中文为默认语言**，位于根路径 `/`，输出 `<html lang="zh-CN">`。
+- **英文翻译**位于 `/en` 前缀下，输出 `<html lang="en">`。
+- 顶部导航栏右侧提供中英切换按钮，切换时保持当前页面（例如 `/experience` ↔ `/en/experience`），并输出 `hrefLang` 提示。
+- 采用「每种语言独立静态 URL」的方案（而不是同一 URL 用客户端替换文案）：每个页面在构建期完整渲染中文或英文 HTML，并配合 canonical、hreflang、Open Graph、`sitemap.xml` 与 JSON-LD 结构化数据，兼顾 SEO 与 AEO（AI 搜索引擎 / Agent 抓取）。
+- 站点额外生成 `/sitemap.xml`、`/robots.txt`（显式放行主流 AI 爬虫）；`/llms.txt`、`/agent.json` 中同时声明中英文入口。
+- 专有名词（`Jiangban Qin`、`jiangban.eth` 等）与外部媒体链接在任何语言下都保持不变，仅界面与正文文案做翻译。
+
+### 文案与翻译文件
+
+| 位置 | 说明 |
+| --- | --- |
+| `src/lib/i18n/config.ts` | 语言类型、URL 前缀、`localizePath`、hreflang 配置 |
+| `src/lib/i18n/messages.ts` | 导航、页头等全站通用文案 |
+| `src/lib/i18n/metadata.ts` | 每个页面的中英文 title / description、canonical 与 hreflang |
+| `src/lib/i18n/content/*.ts` | 各页面的双语正文内容 |
+| `src/lib/i18n/content/types.ts` | `LocalizedText` / `LocalizedList` / `pick` 等双语工具类型 |
+| `src/app/(zh)`、`src/app/(en)` | 中英文两棵路由树，各自拥有根布局与 `<html lang>` |
 
 ## 🛠️ 定制您的专属主页
 
 本模板被设计为极易修改：
 
-1. **修改个人信息**: 编辑 `src/components/Profile.tsx`，替换您的名称、头衔和简介。
+1. **修改个人信息**: 编辑 `src/components/home/Profile.tsx`，替换您的名称、头衔和简介。
 2. **替换头像**: 将您的头像图片命名为 `avatar.png` (或修改扩展名)，并放置在 `public/` 目录下。
-3. **更新社交链接**: 编辑 `src/components/SocialLogo.tsx` 和 `src/components/SocialLinks.tsx` 中的 `links` 数组，更新为您自己的链接和图标。
+3. **更新社交链接**: 编辑 `src/components/home/SocialLogo.tsx` 和 `src/components/home/SocialLinks.tsx` 中的 `links` 数组，更新为您自己的链接和图标。
 4. **自定义图标**: 您可以将任何社交平台的 Logo 存放在 `public/logo/` 目录下，并在组件中通过 `Image` 组件引入。
 5. **修改主题色**: 在 `src/app/globals.css` 中修改 `--color-brand` 和背景渐变颜色。
+6. **修改双语文案**: 中文 / 英文页面正文分别位于 `src/lib/i18n/content/` 下的内容文件，新增页面时同步在 `src/app/(zh)` 与 `src/app/(en)/en` 中创建对应路由。
 
 ## 📦 去中心化部署指南
 
