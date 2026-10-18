@@ -133,6 +133,18 @@ function ExperienceCard({
   );
 }
 
+/**
+ * 由作品集大图路径推导缩略图路径：
+ * 大图位于 public/lens/ 下，缩略图为同目录 thumbs/ 子目录中的同名 .webp（宽 400px）。
+ * 这样数据文件只需维护大图地址，缩略图按约定自动定位。
+ */
+function thumbSrc(src: string): string {
+  const slash = src.lastIndexOf("/");
+  const dir = slash === -1 ? "" : src.slice(0, slash);
+  const base = (slash === -1 ? src : src.slice(slash + 1)).replace(/\.[^.]+$/, "");
+  return `${dir}/thumbs/${base}.webp`;
+}
+
 /** 作品集画廊：缩略图 + 点击放大 */
 function PortfolioGallery({
   images,
@@ -151,13 +163,15 @@ function PortfolioGallery({
             key={i}
             type="button"
             onClick={() => setSelectedIndex(i)}
+            aria-label={`${pick(experiencePageContent.viewImage, locale)}：${pick(img.alt, locale)}`}
             className="group overflow-hidden rounded-xl border border-zinc-100 bg-zinc-50 transition-all hover:ring-2 hover:ring-brand/40"
           >
             <Image
-              src={img.src}
+              src={thumbSrc(img.src)}
               alt={pick(img.alt, locale)}
               width={400}
               height={300}
+              loading="lazy"
               className="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105"
               unoptimized
             />

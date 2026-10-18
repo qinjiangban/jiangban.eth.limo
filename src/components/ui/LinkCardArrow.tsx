@@ -1,4 +1,3 @@
-'use client'
 
 import { CalendarIcon, ArrowRightIcon } from "lucide-react"
 import { Card, CardHeader, CardTitle } from "./card"

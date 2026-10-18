@@ -36,6 +36,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
   const closeMenu = useCallback(() => setMenuOpen(false), []);
 
   const targetLocale = otherLocale(locale);
@@ -81,6 +82,23 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
 
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
+
+  // 菜单展开时，点击菜单面板与触发按钮之外的区域即关闭（移动端常见交互）
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target as Node | null;
+      if (!target) return;
+      // 点在菜单面板内或触发按钮上时不拦截，交给各自的 onClick / 链接跳转处理
+      if (menuRef.current?.contains(target)) return;
+      if (menuButtonRef.current?.contains(target)) return;
+      setMenuOpen(false);
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
   }, [menuOpen]);
 
   // 菜单展开时强制使用浮层配色，避免下拉面板压在透明头部上难以阅读
@@ -187,7 +205,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
 
         {/* 右侧操作区 */}
         <div className="flex shrink-0 items-center gap-1">
-          {/* 中英切换：指向另一语言下同一页面的独立静态 URL */}
+          {/* 中英切换：仅桌面端显示；移动端入口在下方汉堡菜单内 */}
           <Link
             href={languageHref}
             hrefLang={hreflang[targetLocale]}
@@ -195,7 +213,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
             aria-label={m.header.languageToggleAria}
             title={m.header.languageToggleTitle}
             className={cn(
-              "inline-flex h-9 items-center gap-1 rounded-full px-3 text-sm font-semibold outline-none transition-colors duration-300 focus-visible:ring-2",
+              "hidden h-9 items-center gap-1 rounded-full px-3 text-sm font-semibold outline-none transition-colors duration-300 focus-visible:ring-2 md:inline-flex",
               focusRing,
               floating
                 ? "text-zinc-600 ring-1 ring-zinc-900/10 hover:bg-zinc-900/5 hover:text-zinc-900"
@@ -249,6 +267,7 @@ export default function SiteHeader({ locale }: { locale: Locale }) {
         {/* 移动端下拉菜单 */}
         <div
           id="site-mobile-menu"
+          ref={menuRef}
           hidden={!menuOpen}
           className={cn(
             "absolute inset-x-0 top-full z-40 mt-2 md:hidden",

@@ -5,7 +5,7 @@ export const siteProfile = {
   roleZh: "Web3 Builder 与 DApp 开发者",
   url: "https://jiangban.eth.limo",
   ens: "jiangban.eth",
-  evmAddress: "0x6e5C9aFa78E4a476600279b8dFDa29572e5F2a43",
+  evmAddress: "",
   tagline:
     "Builds DApps, AI agent workflows, x402 payment integrations, and growth-oriented Web3 products.",
   taglineZh:
@@ -93,7 +93,6 @@ export const siteProfile = {
     { label: "Website", href: "https://jiangban.eth.limo" },
     { label: "X", href: "https://x.com/qinjiangban" },
     { label: "GitHub", href: "https://github.com/qinjiangban" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/qinjiangban/" },
     { label: "YouTube", href: "https://www.youtube.com/@qinjiangban" },
     { label: "ENS", href: "https://app.ens.domains/jiangban.eth" },
   ],

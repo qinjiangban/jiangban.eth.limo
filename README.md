@@ -48,6 +48,17 @@ pnpm build
 # 产物输出到 out/ 目录
 ```
 
+预览构建产物（纯静态导出，不使用 `next start`，需要任意静态文件服务器）：
+
+```bash
+pnpm start
+# 等价于 npx --yes serve@latest out，默认监听 http://localhost:3000
+```
+
+> 本项目配置了 `output: 'export'`，产物是纯静态文件，`next start` 不适用（会直接报错退出）。
+> `pnpm start` 通过 `serve` 预览 `out/` 目录；首次运行会按提示下载 `serve`，之后走 npx 缓存。
+> 也可以用任何其他静态服务器，例如 `npx http-server out` 或 `python -m http.server`（需切到 out 目录）。
+
 > 提示：部分受限沙箱环境无法为构建 worker 创建子进程（`spawn EPERM`）。此时可用 `NEXT_SKIP_TYPECHECK=1 NEXT_BUILD_WORKER_THREADS=1 pnpm build` 跳过构建期类型检查并改用 worker 线程，再单独执行 `pnpm exec tsc --noEmit` 校验类型；正常 CI / 本地环境无需设置这两个变量。
 
 ## 🌐 中英双语（中文优先）

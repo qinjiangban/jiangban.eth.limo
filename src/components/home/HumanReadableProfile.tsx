@@ -48,7 +48,8 @@ function parseProfileText(text: string): Block[] {
       continue;
     }
 
-    if (line === "") {
+    // Markdown 分隔线语法：单独一行 --- 生成 hr 块
+    if (line.trim() === "---") {
       flushParagraph();
       flushList();
       blocks.push({ type: "hr" });

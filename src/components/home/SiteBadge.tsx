@@ -14,7 +14,7 @@ export default function SiteBadge({ locale }: LocaleProps) {
 
       <p className="text-xs text-zinc-500">
         {pick(content.accessPrefix, locale)}{" "}
-        <span className="font-mono text-zinc-500">jiangban.eth.limo</span>
+        <span className="font-mono text-zinc-500">jiangban.eth</span>
         {" "}
         {pick(content.accessSuffix, locale)}
       </p>

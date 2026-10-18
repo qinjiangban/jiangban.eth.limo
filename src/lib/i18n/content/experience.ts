@@ -194,6 +194,8 @@ export interface ExperiencePageContent {
   present: LocalizedText;
   /** 作品集灯箱在图片 alt 缺失时的兜底标题 */
   portfolio: LocalizedText;
+  /** 作品集缩略图按钮的无障碍标签（查看大图） */
+  viewImage: LocalizedText;
 }
 
 export const experiencePageContent: ExperiencePageContent = {
@@ -203,4 +205,5 @@ export const experiencePageContent: ExperiencePageContent = {
   educationHeading: { zh: "教育背景", en: "Education" },
   present: { zh: "至今", en: "Present" },
   portfolio: { zh: "作品集", en: "Portfolio" },
+  viewImage: { zh: "查看大图", en: "View full image" },
 };
