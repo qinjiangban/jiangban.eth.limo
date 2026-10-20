@@ -2,6 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: "export",
+  // IPFS 网关按「目录 + index.html」解析 URL，不做 .html 文件猜测。
+  // 开启后 /en 导出为 en/index.html、/experience 导出为 experience/index.html，
+  // 站点内所有链接也会自动带上结尾斜杠，适配 ENS(.limo) / IPFS 网关。
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },

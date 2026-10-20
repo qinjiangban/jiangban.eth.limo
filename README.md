@@ -115,6 +115,13 @@ pnpm start
 4. 前往 ENS 官方 App (app.ens.domains)，在您的域名设置中，将 **Content Hash** 更新为上述值。
 5. 等待链上交易确认后，您就可以通过 Web3 浏览器直接访问 `yourname.eth`，或者通过 Web2 网关访问 `https://yourname.eth.limo`。
 
+> **IPFS 部署注意事项（重要）**：
+>
+> - 本项目已在 `next.config.ts` 中设置 `trailingSlash: true`。IPFS 网关（包括 `.eth.limo`）按「目录 + `index.html`」解析 URL，**不会**像 Vercel/Netlify 那样把 `/en` 映射到 `en.html`。因此 `/en`、`/experience` 等页面必须导出为 `en/index.html`、`experience/index.html` 这种目录结构才能通过网关访问；站内链接也因此统一带结尾斜杠（如 `/en/experience/`）。
+> - **每次重新部署后 IPFS CID 都会变化**，必须重新到 app.ens.domains 更新 Content Hash，否则 `.eth.limo` 仍指向旧版本。
+> - 更新 Content Hash 后，`.limo` 网关可能有几分钟到几小时的缓存，页面未生效时先等待再排查。
+> - 本地预览构建产物请用 `pnpm start`（内部是 `npx serve out`）；静态导出模式不支持 `next start`。
+
 ## 📄 许可证
 
 Apache License 2.0 - 欢迎自由分发、修改和使用。

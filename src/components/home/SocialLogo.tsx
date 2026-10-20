@@ -16,7 +16,7 @@ export default function SocialLogo() {
       label: "Farcaster",
     },
     {
-      href: "https://hey.xyz/u/jiangban",
+      href: "https://hey.xyz/u/qinjiangban",
       iconSrc: "/logo/lens.jpg",
       label: "Lens",
     },

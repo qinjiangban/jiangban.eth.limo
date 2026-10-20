@@ -40,18 +40,25 @@ export function localePrefix(locale: Locale): string {
   return locale === "zh" ? "" : "/en";
 }
 
-/** 把「语言无关路径」转换为指定语种的真实路径。 */
+/**
+ * 把「语言无关路径」转换为指定语种的真实路径。
+ *
+ * 站点配置了 trailingSlash（适配 IPFS 网关的目录解析），因此除首页 `/` 外，
+ * 所有路径都以结尾斜杠返回，保证站内链接、导航高亮与 canonical/hreflang 一致。
+ */
 export function localizePath(locale: Locale, path = "/"): string {
   const normalized =
     path === "/" || path === "" ? "" : path.startsWith("/") ? path : `/${path}`;
 
-  return `${localePrefix(locale)}${normalized}` || "/";
+  const result = `${localePrefix(locale)}${normalized}`;
+  if (result === "" || result === "/") return "/";
+  return result.endsWith("/") ? result : `${result}/`;
 }
 
 /** 去掉路径上的语言前缀，得到语言无关路径（用于生成 hreflang 与语言切换链接）。 */
 export function stripLocale(pathname: string): string {
   if (!pathname) return "/";
-  if (pathname === "/en") return "/";
+  if (pathname === "/en" || pathname === "/en/") return "/";
   if (pathname.startsWith("/en/")) return pathname.slice(3);
   return pathname;
 }
